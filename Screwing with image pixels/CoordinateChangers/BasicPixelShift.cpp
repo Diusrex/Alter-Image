@@ -1,6 +1,9 @@
 #include "BasicPixelShift.h"
 
-#include <iostream>
+#include "../PixelCoordinate.h"
+
+namespace CoordinateChanger
+{
 
 BasicPixelShift::BasicPixelShift(const int xShift, const int yShift, const int xShiftEveryPixels, const int yShiftEveryPixels)
     : xShift(xShift), 
@@ -8,10 +11,9 @@ BasicPixelShift::BasicPixelShift(const int xShift, const int yShift, const int x
     xShiftEveryPixels(xShiftEveryPixels), 
     yShiftEveryPixels(yShiftEveryPixels)
 {
-    std::cout << xShift << "  " << yShift << " " << xShiftEveryPixels << " " << yShiftEveryPixels << '\n';
 }
 
-Coordinate BasicPixelShift::GetShiftedPosition(const Coordinate &origionalCoordinate, const Coordinate &imageSize)
+PixelCoordinate BasicPixelShift::GetShiftedPosition(const Coordinate &origionalCoordinate, const int &channel, const Coordinate &imageSize)
 {
     int newX, newY;
     if (ShouldShift(origionalCoordinate))
@@ -26,10 +28,12 @@ Coordinate BasicPixelShift::GetShiftedPosition(const Coordinate &origionalCoordi
         newY = origionalCoordinate.y;
     }
 
-    return Coordinate(newX, newY);
+    return PixelCoordinate(newX, newY, channel);
 }
 
 bool BasicPixelShift::ShouldShift(const Coordinate & origionalCoordinate)
 {
     return origionalCoordinate.x % xShiftEveryPixels == 0 && origionalCoordinate.y % yShiftEveryPixels == 0;
 }
+
+} // CoordinateChanger

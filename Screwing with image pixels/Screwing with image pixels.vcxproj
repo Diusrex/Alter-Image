@@ -10,6 +10,28 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AlterImage.cpp" />
+    <ClCompile Include="CoordinateChangers\BasicPixelShift.cpp" />
+    <ClCompile Include="CoordinateChangers\ChannelShift.cpp" />
+    <ClCompile Include="CoordinateChangers\FlipPixels.cpp" />
+    <ClCompile Include="CoordinateChangers\RandomGenerators.cpp" />
+    <ClCompile Include="CoordinateChangers\SwapChannelsShift.cpp" />
+    <ClCompile Include="PixelCoordinate.cpp" />
+    <ClCompile Include="Screwing with image pixels.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlterImage.h" />
+    <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="CoordinateChangers\BasicPixelShift.h" />
+    <ClInclude Include="CoordinateChangers\ChannelShift.h" />
+    <ClInclude Include="CoordinateChangers\FlipPixels.h" />
+    <ClInclude Include="CoordinateChangers\PixelShift.h" />
+    <ClInclude Include="CoordinateChangers\RandomGenerators.h" />
+    <ClInclude Include="CoordinateChangers\SwapChannelsShift.h" />
+    <ClInclude Include="PixelCoordinate.h" />
+    <ClInclude Include="StandardInformation.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9FFD9DE9-16E8-4121-8A23-E46C88ED3076}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -55,6 +77,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,17 +104,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="AlterImage.cpp" />
-    <ClCompile Include="BasicPixelShift.cpp" />
-    <ClCompile Include="Screwing with image pixels.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AlterImage.h" />
-    <ClInclude Include="BasicPixelShift.h" />
-    <ClInclude Include="Coordinate.h" />
-    <ClInclude Include="PixelShift.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

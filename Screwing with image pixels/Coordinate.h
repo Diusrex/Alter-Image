@@ -3,15 +3,14 @@
 
 struct Coordinate
 {
+    Coordinate()
+    {}
     Coordinate(int x, int y)
         :x(x),
         y(y)
     {}
 
-    const int x, y;
-
-private:
-    Coordinate& operator=(const Coordinate &tmp) = delete;
+    int x, y;
 };
 
 #endif

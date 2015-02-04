@@ -1,10 +1,12 @@
+#include "AlterImage.h"
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include "AlterImage.h"
 
 #include "Coordinate.h"
-#include "PixelShift.h"
+#include "PixelCoordinate.h"
+#include "CoordinateChangers/PixelShift.h"
 
 
 AlterImage::AlterImage(const cv::Mat &mainImage)
@@ -14,7 +16,7 @@ AlterImage::AlterImage(const cv::Mat &mainImage)
 }
 
 AlterImage::AlterImage(const std::string &fileName)
-    : mainImage(cv::imread("testingImage.jpg")),
+    : mainImage(cv::imread(fileName)),
     imageSize(mainImage.cols, mainImage.rows)
 {
 }
@@ -24,7 +26,7 @@ AlterImage::~AlterImage()
 
 }
 
-cv::Mat AlterImage::CreateShiftedImage(PixelShift *shift) const
+cv::Mat AlterImage::CreateShiftedImage(CoordinateChanger::PixelShift *shift) const
 {
     cv::Mat currentShiftedImage = mainImage.clone();
 
@@ -35,20 +37,11 @@ cv::Mat AlterImage::CreateShiftedImage(PixelShift *shift) const
     return currentShiftedImage;
 }
 
-void AlterImage::ChangePixel(cv::Mat &currentShiftedImage, const Coordinate &pixelToChange, PixelShift *shift) const
-{
-    Coordinate pixelToCopyFrom = shift->GetShiftedPosition(pixelToChange, imageSize);
-
-    CopyPixelFromOrigional(currentShiftedImage, pixelToChange, pixelToCopyFrom);
-}
-
-void AlterImage::CopyPixelFromOrigional(cv::Mat &currentShiftedImage, const Coordinate &pixelToChange, const Coordinate& pixelToCopyFrom) const
+void AlterImage::ChangePixel(cv::Mat &currentShiftedImage, const Coordinate &pixelToChange, CoordinateChanger::PixelShift *shift) const
 {
     for (int channel = 0; channel < mainImage.channels(); channel++)
-        currentShiftedImage.data[CalculatePixelPosition(pixelToChange, currentShiftedImage) + channel] = mainImage.data[CalculatePixelPosition(pixelToCopyFrom, mainImage) + channel];
-}
-
-int AlterImage::CalculatePixelPosition(const Coordinate &pos, const cv::Mat &image) const
-{
-    return image.step[0] * pos.y + image.step[1] * pos.x;
+    {
+        PixelCoordinate pixelToCopyFrom = shift->GetShiftedPosition(pixelToChange, channel, imageSize);
+        currentShiftedImage.data[PixelCoordinate::CalculatePixelPosition(pixelToChange, channel, currentShiftedImage)] = mainImage.data[pixelToCopyFrom.CalculatePixelPosition(mainImage)];
+    }
 }

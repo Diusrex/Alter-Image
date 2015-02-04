@@ -13,29 +13,68 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\CoordinateChangers">
+      <UniqueIdentifier>{e4dc061b-b700-40ba-bc16-4c53c3234bd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CoordinateChangers">
+      <UniqueIdentifier>{70a47f3f-8a6a-4751-8f79-059f4251def2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Screwing with image pixels.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AlterImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BasicPixelShift.cpp">
+    <ClCompile Include="Screwing with image pixels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateChangers\BasicPixelShift.cpp">
+      <Filter>Source Files\CoordinateChangers</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateChangers\ChannelShift.cpp">
+      <Filter>Source Files\CoordinateChangers</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateChangers\FlipPixels.cpp">
+      <Filter>Source Files\CoordinateChangers</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateChangers\RandomGenerators.cpp">
+      <Filter>Source Files\CoordinateChangers</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateChangers\SwapChannelsShift.cpp">
+      <Filter>Source Files\CoordinateChangers</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelCoordinate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlterImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelShift.h">
+    <ClInclude Include="StandardInformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coordinate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BasicPixelShift.h">
+    <ClInclude Include="CoordinateChangers\BasicPixelShift.h">
+      <Filter>Header Files\CoordinateChangers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateChangers\ChannelShift.h">
+      <Filter>Header Files\CoordinateChangers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateChangers\FlipPixels.h">
+      <Filter>Header Files\CoordinateChangers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateChangers\PixelShift.h">
+      <Filter>Header Files\CoordinateChangers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateChangers\RandomGenerators.h">
+      <Filter>Header Files\CoordinateChangers</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateChangers\SwapChannelsShift.h">
+      <Filter>Header Files\CoordinateChangers</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelCoordinate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlterImage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
