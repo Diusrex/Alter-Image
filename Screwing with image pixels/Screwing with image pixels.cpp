@@ -18,14 +18,11 @@
 #include "CoordinateChangers/RandomGenerators.h"
 #include "CoordinateChangers/SwapChannelsShift.h"
 
-std::string toString(int number)
-{
-    std::stringstream ss;
-    ss << number;
-    std::string temp;
-    ss >> temp;
-    return temp;
-}
+const std::string DEFAULT_IMAGE = "testingImage.jpg";
+
+std::string toString(int number);
+
+std::string GetImageToChange(int argc, char ** argv);
 
 void GenerateBasicPixelShift(const AlterImage &alterImage);
 void GenerateChannelShift(const AlterImage &alterImage);
@@ -40,13 +37,27 @@ void GenerateCompletelyRandom(const AlterImage &alterImage);
 void SaveFile(const std::string & name, const cv::Mat & image);
 
 
-int main()
+std::string GetImageToChange(int argc, char ** argv);
+
+int main(int argc, char **argv)
 {
     srand(static_cast<unsigned int>(time(NULL)));
 
-    AlterImage alterImage("testingImage.jpg");
+    std::string usedImage = GetImageToChange(argc, argv);
+
+    AlterImage alterImage{ usedImage };
+
+    // Add specific actions you want to do.
+        // May add command line options
     GenerateChannelShift(alterImage);
-    // cvReleaseImage
+}
+
+std::string GetImageToChange(int argc, char ** argv)
+{
+    if (argc >= 2)
+        return argv[1];
+    else
+        return DEFAULT_IMAGE;
 }
 
 void GenerateBasicPixelShift(const AlterImage &alterImage)
@@ -155,4 +166,13 @@ void SaveFile(const std::string & name, const cv::Mat & image)
         std::cout << "Saving '" + name + "' succeeded.\n";
     else
         std::cout << "Saving '" + name + "' succeeded.\n";
+}
+
+std::string toString(int number)
+{
+    std::stringstream ss;
+    ss << number;
+    std::string temp;
+    ss >> temp;
+    return temp;
 }
