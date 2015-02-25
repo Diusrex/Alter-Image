@@ -1,6 +1,6 @@
 # Will want to ignore all of the files that I've edited
 *.jpg
-*Thumbs.db
+Thumbs.db
 
 # Used c++ and Visual Studio ignore files from 
 # https://github.com/github/gitignore Feb 3 2015
